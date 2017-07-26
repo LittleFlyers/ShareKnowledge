@@ -123,7 +123,7 @@ class Dictionary{
 		}*/
         $Dc = db('dictionary');
         $list = $Dc -> where('word_id', 'IN', $wordlist) -> select();
-        $result['data'] = $wordlist['word_id'];
+        $result['data'] = $wordlist[0];
         $result['err_code'] = 0;
         return json_encode($check);
     }
