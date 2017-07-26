@@ -88,10 +88,26 @@ class Dictionary{
         }
         return json_encode($result);
     }
-    //更新词条
-    public function update()
+    //收藏词条
+    public function collect()
     {
-         
+        /* $access_token = input('post.access_token');
+         $user_id = get_user_id_by_access_token($access_token);
+         $word_id = input('post.word_id');*/
+         $user_id = 0;
+         $word_id = 0;
+         $emap['user_id'] = $user_id;
+         $emap['word_id'] = $word_id;
+         $Wc = db('word_collect');
+         $info = $Wc->add($emap);
+         if(false !== $info)
+         {
+             $result['err_code'] = 0;
+         }else
+         {
+             $result['err_code'] = 1;
+         }
+         return json_encode($result);
     }
     //删除词条
     public function delete()
