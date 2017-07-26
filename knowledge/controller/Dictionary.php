@@ -118,7 +118,7 @@ class Dictionary{
         $wordlist = $Wc-> field('word_id') -> where($emap) ->select();
         $Dc = db('dictionary');
         $list = $Dc -> where('word_id', 'IN', $wordlist) -> select();
-        $result['data'] = $list;
+        $result['data'] = $wordlist;
         $result['err_code'] = 0;
         return json_encode($result);
     }
