@@ -116,9 +116,14 @@ class Dictionary{
         $emap['user_id'] = 21;//$user_id;
         $Wc = db('word_collect');
         $wordlist = $Wc-> field('word_id') -> where($emap) ->select();
+        $check = array();
+        foreach ($wordlist as $key => $value) {
+            # code...
+            array_push($check,$value);
+        }
         $Dc = db('dictionary');
         $list = $Dc -> where('word_id', 'IN', $wordlist) -> select();
-        $result['data'] = $wordlist;
+        $result['data'] = $check;
         $result['err_code'] = 0;
         return json_encode($result);
     }
