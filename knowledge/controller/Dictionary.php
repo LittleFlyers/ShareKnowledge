@@ -118,7 +118,7 @@ class Dictionary{
         $wordlist = $Wc-> field('word_id') -> where($emap) ->select();
         $check = array();
         for(i = 0; i < count($wordlist);i++){
-			$check[] = $wordlist[i].word_id;
+			$check[i] = $wordlist[i]['word_id'];
 		}
         $Dc = db('dictionary');
         $list = $Dc -> where('word_id', 'IN', $wordlist) -> select();
