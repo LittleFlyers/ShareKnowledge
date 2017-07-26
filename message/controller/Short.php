@@ -19,7 +19,7 @@ class Short
         $result['err_msg'] = 'ok';
         $result['verify_code'] = $verify_code;
 
-        return $result;
+        return json_encode($result);
     }
 
     private function sendSMS( $mobile, $msg, $needstatus = 1) {
