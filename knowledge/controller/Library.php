@@ -15,7 +15,14 @@ class Library{
 	//获取文库中的单个文件
 	public function one()
 	{
-		
+		$document_id = input('post.id');
+		$L = db('document');
+		$enmp['document_id'] = $document_id;
+		$list = $L -> where($enmp) -> limit(1) -> select();
+		$result['err_code'] = 0;
+		$result['data'] = $list;
+
+		return json_encode($result);
 	}
 	//向文库中上传文件
 	public function add()
