@@ -111,9 +111,9 @@ class Dictionary{
     }
     //获取收藏的词条
     public function getCollect(){
-        /*$access_token = input('post.access_token');
-        $user_id = get_user_id_by_access_token($access_token);*/
-        $emap['user_id'] = 21;//$user_id;
+        $access_token = input('post.access_token');
+        $user_id = get_user_id_by_access_token($access_token);
+        $emap['user_id'] = $user_id;
         $Wc = db('word_collect');
         $wordlist = $Wc-> field('word_id') -> where($emap) ->select();
         $check = array();
