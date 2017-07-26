@@ -117,15 +117,14 @@ class Dictionary{
         $Wc = db('word_collect');
         $wordlist = $Wc-> field('word_id') -> where($emap) ->select();
         $check = array();
-        foreach ($wordlist as $key => $value) {
-            # code...
-            array_push($check,$value);
-        }
+        for(i = 0; i < count($wordlist);i++){
+			$check[] = $wordlist[i].word_id;
+		}
         $Dc = db('dictionary');
         $list = $Dc -> where('word_id', 'IN', $wordlist) -> select();
         $result['data'] = $check;
         $result['err_code'] = 0;
-        return json_encode($result);
+        return json_encode($check);
     }
     //删除词条
     public function delete()
