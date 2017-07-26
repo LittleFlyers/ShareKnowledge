@@ -99,7 +99,7 @@ class Dictionary{
          $emap['user_id'] = $user_id;
          $emap['word_id'] = $word_id;
          $Wc = db('word_collect');
-         $info = $Wc->add($emap);
+         $info = $Wc->insert($emap);
          if(false !== $info)
          {
              $result['err_code'] = 0;
