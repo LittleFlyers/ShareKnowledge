@@ -109,6 +109,19 @@ class Dictionary{
          }
          return json_encode($result);
     }
+    //获取收藏的词条
+    public function getCollect(){
+        /*$access_token = input('post.access_token');
+        $user_id = get_user_id_by_access_token($access_token);*/
+        $emap['user_id'] = 21;//$user_id;
+        $Wc = db('word_collect');
+        $wordlist = $Wc-> field('word_id') -> where($emap) ->select();
+        $Dc = db('dictionary');
+        $list = $Dc -> where('word_id', 'IN', $wordlist) -> select();
+        $result['data'] = $list;
+        $result['err_code'] = 0;
+        return json_encode($result);
+    }
     //删除词条
     public function delete()
     {
